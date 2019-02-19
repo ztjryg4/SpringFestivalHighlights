@@ -23,17 +23,18 @@ def image_process(file, code, i):
     file_name = str(i)+ '.jpg'
     file_path = os.path.join('upload', code, file_name).replace('\\', '/')
     fromImg = Image.open(file)
-    exif = fromImg._getexif()
-    orientation_key = 274  # cf ExifTags
-    if exif and orientation_key in exif:
-        orientation = exif[orientation_key]
-        rotate_values = {
-            3: Image.ROTATE_180,
-            6: Image.ROTATE_270,
-            8: Image.ROTATE_90
-        }
-    if orientation in rotate_values:
-        fromImg = fromImg.transpose(rotate_values[orientation])
+    if fromImg.format=='JPEG':
+        exif = fromImg._getexif()
+        orientation_key = 274  # cf ExifTags
+        if exif and orientation_key in exif:
+            orientation = exif[orientation_key]
+            rotate_values = {
+                3: Image.ROTATE_180,
+                6: Image.ROTATE_270,
+                8: Image.ROTATE_90
+            }
+        if orientation in rotate_values:
+            fromImg = fromImg.transpose(rotate_values[orientation])
     width, height = fromImg.size
     region = (0,0,0,0)
     if width - height > 5:
