@@ -42,6 +42,9 @@ def image_process(file, code, i):
     elif width - height < 5:
         region = (0, int((height - width) / 2), width, int((height - width) / 2 + width))
     fromImg = fromImg.crop(region)
+    if len(fromImg.split()) == 4:
+        r, g, b, a = fromImg.split()  # 利用split和merge将通道从四个转换为三个
+        fromImg = Image.merge("RGB", (r, g, b))
     fromImg.save(file_path, quality=95)
 
 
