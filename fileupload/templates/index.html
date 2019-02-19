@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="../../../../favicon.ico">
+
+        <title>你的年·生成你的春节精选</title>
+
+        <link href="../../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../static/sticky-footer-navbar.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css"/>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="../../static/exif.js"></script>
+    </head>
+<body>
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="{% url 'fileupload:upload' %}">你的年</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'fileupload:upload' %}">创建<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'fileupload:extraction' 0%}">提取</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Begin page content -->
+    <main role="main" class="container">
+        {% load static %}
+        <h1 class="mt-5">生成你的年</h1><br>
+        <p class="lead">上传你的新年精选照片，然后根据我们给出的提取码在<a href="download.html">此处</a>下载合成图片。
+        <p class="lead">第一步也是唯一一步，这看起来有些枯燥，你需要选择27张你钟意的照片。如果缩略图所显示的图片朝向与实际不符，不必担心，程序将自动修正它。请尽量选择正方形照片，对于非正方形照片，程序将为你选择居中位置的最大正方形。</p>
+        <div>
+        <div>
+            <form action="{% url 'fileupload:upload' %}" method="post" enctype="multipart/form-data">
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    第01-09张照片
+                                </button>
+                            </h5>
+                        </div>
+                        <!--1-9主体-->
+                        <div>
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                <div class="card-body">
+
+                                    <div class="media">
+                                        <img class="mr-3" src="{% static '/img/hint/01.png' %}" height="100" alt="缩略图" id="pre_01">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">第01张照片</h5>
+                                            <input type="button" value="浏览 …" class="btn btn-secondary btn-lg" onclick="$('#id_img_01').click();">
+                                            <input type="file" class="file" name="img_01" accept="image/*" required="" id="id_img_01" onchange="previewFile(this,'01')" data-show-preview="false" style="display: none">
+                                        </div>
+                                    </div><br>
+
+                                    <div class="media">
+                                        <img class="mr-3" src="{% static '/img/hint/02.png' %}" height="100" alt="缩略图" id="pre_02">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">第02张照片</h5>
+                                            <input type="button" value="浏览 …" class="btn btn-secondary btn-lg" onclick="$('#id_img_02').click();">
+                                            <input type="file" class="file" name="img_02" accept="image/*" required="" id="id_img_02" onchange="previewFile(this,'02')" data-show-preview="false" style="display: none">
+                                        </div>
+                                    </div><br>
+
+                                    <div class="media">
+                                        <img class="mr-3" src="{% static '/img/hint/03.png' %}" height="100" alt="缩略图" id="pre_03">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">第03张照片</h5>
+                                            <input type="button" value="浏览 …" class="btn btn-secondary btn-lg" onclick="$('#id_img_03').click();">
+                                            <input type="file" class="file" name="img_03" accept="image/*" required="" id="id_img_03" onchange="previewFile(this,'03')" data-show-preview="false" style="display: none">
+                                        </div>
+                                    </div><br>
+
+                                    <div class="media">
+                                        <img class="mr-3" src="{% static '/img/hint/04.png' %}" height="100" alt="缩略图" id="pre_04">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">第04张照片</h5>
+                                            <input type="button" value="浏览 …" class="btn btn-secondary btn-lg" onclick="$('#id_img_04').click();">
+                                            <input type="file" class="file" name="img_04" accept="image/*" required="" id="id_img_04" onchange="previewFile(this,'04')" data-show-preview="false" style="display: none">
+                                        </div>
+                                    </div><br>
+
+                                    <div class="media">
+                                        <img class="mr-3" src="{% static '/img/hint/05.png' %}" height="100" alt="缩略图" id="pre_05">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">第05张照片</h5>
+                                            <input type="button" value="浏览 …" class="btn btn-secondary btn-lg" onclick="$('#id_img_05').click();">
+                                            <input type="file" class="file" name="img_05" accept="image/*" required="" id="id_img_05" onchange="previewFile(this,'05')" data-show-preview="false" style="display: none">
+                                        </div>
+                                    </div><br>
+
+                                    <div class="media">
+                                        <img class="mr-3" src="{% static '/img/hint/06.png' %}" height="100" alt="缩略图" id="pre_06">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">第06张照片</h5>
+                                            <input type="button" value="浏览 …" class="btn btn-secondary btn-lg" onclick="$('#id_img_06').click();">
+                                            <input type="file" class="file" name="img_06" accept="image/*" required="" id="id_img_06" onchange="previewFile(this,'06')" data-show-preview="false" style="display: none">
+                                        </div>
+                                    </div><br>
+
+                                    <div class="media">
+                                        <img class="mr-3" src="{% static '/img/hint/07.png' %}" height="100" alt="缩略图" id="pre_07">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">第07张照片</h5>
+                                            <input type="button" value="浏览 …" class="btn btn-secondary btn-lg" onclick="$('#id_img_07').click();">
+                                            <input type="file" class="file" name="img_07" accept="image/*" required="" id="id_img_07" onchange="previewFile(this,'07')" data-show-preview="false" style="display: none">
+                                        </div>
+                                    </div><br>
+
+                                    <div class="media">
+                                        <img class="mr-3" src="{% static '/img/hint/08.png' %}" height="100" alt="缩略图" id="pre_08">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">第08张照片</h5>
+                                            <input type="button" value="浏览 …" class="btn btn-secondary btn-lg" onclick="$('#id_img_08').click();">
+                                            <input type="file" class="file" name="img_08" accept="image/*" required="" id="id_img_08" onchange="previewFile(this,'08')" data-show-preview="false" style="display: none">
+                                        </div>
+                                    </div><br>
+
+                                    <div class="media">
+                                        <img class="mr-3" src="{% static '/img/hint/09.png' %}" height="100" alt="缩略图" id="pre_09">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">第09张照片</h5>
+                                            <input type="button" value="浏览 …" class="btn btn-secondary btn-lg" onclick="$('#id_img_09').click();">
+                                            <input type="file" class="file" name="img_09" accept="image/*" required="" id="id_img_09" onchange="previewFile(this,'09')" data-show-preview="false" style="display: none">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    第10-18张照片
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                            <div class="card-body">
+                                <!--10-18主体-->
+                                <div>
+                                    <div class="media">
+                                        <img class="mr-3" src="{% static '/img/hint/10.png' %}" height="100" alt="缩略图" id="pre_10">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">第10张照片</h5>
+                                            <input type="button" value="浏览 …" class="btn btn-secondary btn-lg" onclick="$('#id_img_10').click();">
+                                            <input type="file" class="file" name="img_10" accept="image/*" required="" id="id_img_10" onchange="previewFile(this,'10')" data-show-preview="false" style="display: none">
+                                        </div>
+                                    </div><br>
+
+                                    <div class="media">
+                                        <img class="mr-3" src="{% static '/img/hint/11.png' %}" height="100" alt="缩略图" id="pre_11">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">第11张照片</h5>
+                                            <input type="button" value="浏览 …" class="btn btn-secondary btn-lg" onclick="$('#id_img_11').click();">
+                                            <input type="file" class="file" name="img_11" accept="image/*" required="" id="id_img_11" onchange="previewFile(this,'11')" data-show-preview="false" style="display: none">
+                                        </div>
+                                    </div><br>
+
+                                    <div class="media">
+                                        <img class="mr-3" src="{% static '/img/hint/12.png' %}" height="100" alt="缩略图" id="pre_12">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">第12张照片</h5>
+                                            <input type="button" value="浏览 …" class="btn btn-secondary btn-lg" onclick="$('#id_img_12').click();">
+                                            <input type="file" class="file" name="img_12" accept="image/*" required="" id="id_img_12" onchange="previewFile(this,'12')" data-show-preview="false" style="display: none">
+                                        </div>
+                                    </div><br>
+
+                                    <div class="media">
+                                        <img class="mr-3" src="{% static '/img/hint/13.png' %}" height="100" alt="缩略图" id="pre_13">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">第13张照片</h5>
+                                            <input type="button" value="浏览 …" class="btn btn-secondary btn-lg" onclick="$('#id_img_13').click();">
+                                            <input type="file" class="file" name="img_13" accept="image/*" required="" id="id_img_13" onchange="previewFile(this,'13')" data-show-preview="false" style="display: none">
+                                        </div>
+                                    </div><br>
+
+                                    <div class="media">
+                                        <img class="mr-3" src="{% static '/img/hint/14.png' %}" height="100" alt="缩略图" id="pre_14">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">第14张照片</h5>
+                                            <input type="button" value="浏览 …" class="btn btn-secondary btn-lg" onclick="$('#id_img_14').click();">
+                                            <input type="file" class="file" name="img_14" accept="image/*" required="" id="id_img_14" onchange="previewFile(this,'14')" data-show-preview="false" style="display: none">
+                                        </div>
+                                    </div><br>
+
+                                    <div class="media">
+                                        <img class="mr-3" src="{% static '/img/hint/15.png' %}" height="100" alt="缩略图" id="pre_15">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">第15张照片</h5>
+                                            <input type="button" value="浏览 …" class="btn btn-secondary btn-lg" onclick="$('#id_img_15').click();">
+                                            <input type="file" class="file" name="img_15" accept="image/*" required="" id="id_img_15" onchange="previewFile(this,'15')" data-show-preview="false" style="display: none">
+                                        </div>
+                                    </div><br>
+
+                                    <div class="media">
+                                        <img class="mr-3" src="{% static '/img/hint/16.png' %}" height="100" alt="缩略图" id="pre_16">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">第16张照片</h5>
+                                            <input type="button" value="浏览 …" class="btn btn-secondary btn-lg" onclick="$('#id_img_16').click();">
+                                            <input type="file" class="file" name="img_16" accept="image/*" required="" id="id_img_16" onchange="previewFile(this,'16')" data-show-preview="false" style="display: none">
+                                        </div>
+                                    </div><br>
+
+                                    <div class="media">
+                                        <img class="mr-3" src="{% static '/img/hint/17.png' %}" height="100" alt="缩略图" id="pre_17">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">第17张照片</h5>
+                                            <input type="button" value="浏览 …" class="btn btn-secondary btn-lg" onclick="$('#id_img_17').click();">
+                                            <input type="file" class="file" name="img_17" accept="image/*" required="" id="id_img_17" onchange="previewFile(this,'17')" data-show-preview="false" style="display: none">
+                                        </div>
+                                    </div><br>
+
+                                    <div class="media">
+                                        <img class="mr-3" src="{% static '/img/hint/18.png' %}" height="100" alt="缩略图" id="pre_18">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">第18张照片</h5>
+                                            <input type="button" value="浏览 …" class="btn btn-secondary btn-lg" onclick="$('#id_img_18').click();">
+                                            <input type="file" class="file" name="img_18" accept="image/*" required="" id="id_img_18" onchange="previewFile(this,'18')" data-show-preview="false" style="display: none">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    第19-27张照片
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                            <div class="card-body">
+                                <!--19-27主体-->
+                                <div>
+                                    <div class="media">
+                                        <img class="mr-3" src="{% static '/img/hint/19.png' %}" height="100" alt="缩略图" id="pre_19">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">第19张照片</h5>
+                                            <input type="button" value="浏览 …" class="btn btn-secondary btn-lg" onclick="$('#id_img_19').click();">
+                                            <input type="file" class="file" name="img_19" accept="image/*" required="" id="id_img_19" onchange="previewFile(this,'19')" data-show-preview="false" style="display: none">
+                                        </div>
+                                    </div><br>
+
+                                    <div class="media">
+                                        <img class="mr-3" src="{% static '/img/hint/20.png' %}" height="100" alt="缩略图" id="pre_20">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">第20张照片</h5>
+                                            <input type="button" value="浏览 …" class="btn btn-secondary btn-lg" onclick="$('#id_img_20').click();">
+                                            <input type="file" class="file" name="img_20" accept="image/*" required="" id="id_img_20" onchange="previewFile(this,'20')" data-show-preview="false" style="display: none">
+                                        </div>
+                                    </div><br>
+
+                                    <div class="media">
+                                        <img class="mr-3" src="{% static '/img/hint/21.png' %}" height="100" alt="缩略图" id="pre_21">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">第21张照片</h5>
+                                            <input type="button" value="浏览 …" class="btn btn-secondary btn-lg" onclick="$('#id_img_21').click();">
+                                            <input type="file" class="file" name="img_21" accept="image/*" required="" id="id_img_21" onchange="previewFile(this,'21')" data-show-preview="false" style="display: none">
+                                        </div>
+                                    </div><br>
+
+                                    <div class="media">
+                                        <img class="mr-3" src="{% static '/img/hint/22.png' %}" height="100" alt="缩略图" id="pre_22">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">第22张照片</h5>
+                                            <input type="button" value="浏览 …" class="btn btn-secondary btn-lg" onclick="$('#id_img_22').click();">
+                                            <input type="file" class="file" name="img_22" accept="image/*" required="" id="id_img_22" onchange="previewFile(this,'22')" data-show-preview="false" style="display: none">
+                                        </div>
+                                    </div><br>
+
+                                    <div class="media">
+                                        <img class="mr-3" src="{% static '/img/hint/23.png' %}" height="100" alt="缩略图" id="pre_23">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">第23张照片</h5>
+                                            <input type="button" value="浏览 …" class="btn btn-secondary btn-lg" onclick="$('#id_img_23').click();">
+                                            <input type="file" class="file" name="img_23" accept="image/*" required="" id="id_img_23" onchange="previewFile(this,'23')" data-show-preview="false" style="display: none">
+                                        </div>
+                                    </div><br>
+
+                                    <div class="media">
+                                        <img class="mr-3" src="{% static '/img/hint/24.png' %}" height="100" alt="缩略图" id="pre_24">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">第24张照片</h5>
+                                            <input type="button" value="浏览 …" class="btn btn-secondary btn-lg" onclick="$('#id_img_24').click();">
+                                            <input type="file" class="file" name="img_24" accept="image/*" required="" id="id_img_24" onchange="previewFile(this,'24')" data-show-preview="false" style="display: none">
+                                        </div>
+                                    </div><br>
+
+                                    <div class="media">
+                                        <img class="mr-3" src="{% static '/img/hint/25.png' %}" height="100" alt="缩略图" id="pre_25">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">第25张照片</h5>
+                                            <input type="button" value="浏览 …" class="btn btn-secondary btn-lg" onclick="$('#id_img_25').click();">
+                                            <input type="file" class="file" name="img_25" accept="image/*" required="" id="id_img_25" onchange="previewFile(this,'25')" data-show-preview="false" style="display: none">
+                                        </div>
+                                    </div><br>
+
+                                    <div class="media">
+                                        <img class="mr-3" src="{% static '/img/hint/26.png' %}" height="100" alt="缩略图" id="pre_26">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">第26张照片</h5>
+                                            <input type="button" value="浏览 …" class="btn btn-secondary btn-lg" onclick="$('#id_img_26').click();">
+                                            <input type="file" class="file" name="img_26" accept="image/*" required="" id="id_img_26" onchange="previewFile(this,'26')" data-show-preview="false" style="display: none">
+                                        </div>
+                                    </div><br>
+
+                                    <div class="media">
+                                        <img class="mr-3" src="{% static '/img/hint/27.png' %}" height="100" alt="缩略图" id="pre_27">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">第27张照片</h5>
+                                            <input type="button" value="浏览 …" class="btn btn-secondary btn-lg" onclick="$('#id_img_27').click();">
+                                            <input type="file" class="file" name="img_27" accept="image/*" required="" id="id_img_27" onchange="previewFile(this,'27')" data-show-preview="false" style="display: none">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><br>
+                <input type="submit" name="submit" value='提交' class="btn btn-primary">
+            </form>
+        </div>
+
+        </div>
+        </main>
+    <br>
+    <footer class="footer">
+        <div class="container">
+          <span class="text-muted">
+              <span>© 2019 <a href="http://imztj.cn">ZhangTianjie</a></span>
+              <span> · <a href="https://github.com/ztjryg4/SpringFestivalHighlights">GitHub</a></span>
+          </span>
+        </div>
+    </footer>
+
+</body>
+</html>
+
+<script>
+function previewFile(fileObj,id) {
+    var file = fileObj.files[0];
+    var pre_id = 'pre_'+ id;
+    var text_id = 'text'+ id;
+    var preview = document.getElementById(pre_id);
+    var reader = new FileReader();
+    if (file) {
+        reader.readAsDataURL(file);
+    } else {
+        preview.src = "";
+    }
+    reader.onloadend = function () {
+        preview.src = reader.result;
+    }
+}
+</script>

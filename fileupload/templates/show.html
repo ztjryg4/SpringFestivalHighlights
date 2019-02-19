@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="../../../../favicon.ico">
+
+        <title>输入提取码 - 你的年·生成你的春节精选</title>
+
+        <link href="../../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../static/sticky-footer-navbar.css" rel="stylesheet">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+    </head>
+<body>
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="{% url 'fileupload:upload' %}">你的年</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'fileupload:upload' %}">创建</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'fileupload:extraction' 0 %}">提取</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Begin page content -->
+    <main role="main" class="container">
+        {% load static %}
+        <h1 class="mt-5">生成你的年 · 提取</h1><br>
+        <p class="lead">现在你可以保存下面的图片了。你的提取码是<code>{{code}}</code>，自图片创建起的七天之内，你可以在<a href="{% url 'fileupload:extraction' 0%}">此处</a>再次下载。</p>
+        <div>
+            <div>
+                <div class="card">
+                    <div class="card-body">
+                        <img src="../../static/{{code}}/final.png" width="100%">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <br>
+    <footer class="footer">
+        <div class="container">
+          <span class="text-muted">
+              <span>© 2019 <a href="http://imztj.cn">ZhangTianjie</a></span>
+              <span> · <a href="https://github.com/ztjryg4/SpringFestivalHighlights">GitHub</a></span>
+          </span>
+        </div>
+    </footer>
+
+</body>
+</html>
+<script>
