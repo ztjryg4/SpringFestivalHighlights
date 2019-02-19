@@ -42,7 +42,8 @@
         {% load static %}
         <h1 class="mt-5">生成你的年</h1><br>
         <p class="lead">上传你的新年精选照片，然后根据我们给出的提取码在<a href="{% url 'fileupload:extraction' 0%}">此处</a>下载合成图片。
-        <p class="lead">第一步也是唯一一步，这看起来有些枯燥，你需要选择27张你钟意的照片。如果缩略图所显示的图片朝向与实际不符，不必担心，程序将自动修正它。请尽量选择正方形照片，对于非正方形照片，程序将为你选择居中位置的最大正方形。</p>
+        <p class="lead">第一步也是唯一一步，这看起来有些枯燥，你需要选择27张你钟意的照片。</p>
+        <p class="lead">对于非正方形照片，程序将为你选择居中位置的最大正方形。如果缩略图所显示的图片朝向与实际不符，不必担心，程序将自动修正它。</p>
         <div>
         <div>
             <form action="{% url 'fileupload:upload' %}" method="post" enctype="multipart/form-data">
