@@ -41,7 +41,7 @@
     <main role="main" class="container">
         {% load static %}
         <h1 class="mt-5">生成你的年</h1><br>
-        <p class="lead">上传你的新年精选照片，然后根据我们给出的提取码在<a href="download.html">此处</a>下载合成图片。
+        <p class="lead">上传你的新年精选照片，然后根据我们给出的提取码在<a href="{% url 'fileupload:extraction' 0%}">此处</a>下载合成图片。
         <p class="lead">第一步也是唯一一步，这看起来有些枯燥，你需要选择27张你钟意的照片。如果缩略图所显示的图片朝向与实际不符，不必担心，程序将自动修正它。请尽量选择正方形照片，对于非正方形照片，程序将为你选择居中位置的最大正方形。</p>
         <div>
         <div>
@@ -337,7 +337,7 @@
                         </div>
                     </div>
                 </div><br>
-                <input type="submit" name="submit" value='提交' class="btn btn-primary">
+                <input type="submit" name="submit" id="submit" value='提交' class="btn btn-primary" onclick="btntextchange()">
             </form>
         </div>
 
@@ -357,10 +357,15 @@
 </html>
 
 <script>
+    function btntextchange(){
+        document.getElementById("submit").value = "上传中...这需要一些时间";
+    }
+</script>
+
+<script>
 function previewFile(fileObj,id) {
     var file = fileObj.files[0];
     var pre_id = 'pre_'+ id;
-    var text_id = 'text'+ id;
     var preview = document.getElementById(pre_id);
     var reader = new FileReader();
     if (file) {
