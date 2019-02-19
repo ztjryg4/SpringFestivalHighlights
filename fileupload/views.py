@@ -22,7 +22,7 @@ def random_str(randomlength=4):
 def image_process(file, code, i):
     file_name = str(i)+ '.jpg'
     file_path = os.path.join('upload', code, file_name).replace('\\', '/')
-    fromImg = Image.open(file)
+    fromImg = Image.open(file).convert('RGB')
     if fromImg.format=='JPEG':
         exif = fromImg._getexif()
         orientation_key = 274  # cf ExifTags
