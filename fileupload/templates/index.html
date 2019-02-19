@@ -337,7 +337,8 @@
                         </div>
                     </div>
                 </div><br>
-                <input type="submit" name="submit" id="submit" value='提交' class="btn btn-primary" onclick="btntextchange()">
+                <p class="lead">上传需要一些时间，请耐心等待响应。</p>
+                <input type="submit" name="submit" id="submit" value='提交' class="btn btn-primary"">
             </form>
         </div>
 
@@ -355,12 +356,6 @@
 
 </body>
 </html>
-
-<script>
-    function btntextchange(){
-        document.getElementById("submit").value = "上传中...这需要一些时间";
-    }
-</script>
 
 <script>
 function previewFile(fileObj,id) {

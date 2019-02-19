@@ -113,7 +113,7 @@ def upload(request):
             user.save()
 
             ImgProcess(code)
-            return render_to_response('extraction.html',{'code':code})
+            return render_to_response('show.html',{'code':code})
     else:
         uf = UserForm()
     return render_to_response('index.html',{'uf':uf})
