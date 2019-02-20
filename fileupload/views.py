@@ -22,8 +22,9 @@ def random_str(randomlength=4):
 def image_process(file, code, i):
     file_name = str(i)+ '.jpg'
     file_path = os.path.join('upload', code, file_name).replace('\\', '/')
-    fromImg = Image.open(file).convert('RGB')
-    if fromImg.format=='JPEG':
+    fromImg = Image.open(file)
+    print(fromImg.format)
+    if fromImg.format == 'JPEG':
         exif = fromImg._getexif()
         orientation_key = 274  # cf ExifTags
         orientation = 1000
@@ -41,6 +42,7 @@ def image_process(file, code, i):
             # }
         if orientation in rotate_values:
             fromImg = fromImg.transpose(rotate_values[orientation])
+    fromImg = fromImg.convert('RGB')
     width, height = fromImg.size
     region = (0,0,0,0)
     if width - height > 5:
